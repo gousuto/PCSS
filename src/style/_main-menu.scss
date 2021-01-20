@@ -11,15 +11,14 @@ aside.left-panel{
     margin-right: 5px;;
 }
 
-nav#main-menu{
-
-    
+nav#main-menu ul{
+    padding: 0;
+    border: 1px solid yellow;
+    width: 100%;
 }
 
-nav#main-menu li{
-    background-color: red;
-    display: block;
-    border: 1px solid yellow;
-    color: green;
+nav#main-menu ul li{
+    width: 100%;
+    background-color: var(--cl-secundary);
 }
 

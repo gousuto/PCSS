@@ -1,2 +1,17 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --cl-primary: #0063B1;
+    --cl-primary-ligth: #3498DB;
+    --cl-secundary: #C0392B;
+    --cl-secundary-light: #E74C3C;
+    --cl-neutral-dark: #2C3E50;
+    --cl-neutral-light: #ECF0F1;
+}
+
 @import 'basics';
 @import 'main-menu';
