@@ -1,24 +1,27 @@
-aside.left-panel{
-    display: inline-block;
-    width: 20%;
-    max-width: 300px;
-    min-width: 200px;
-    height: 100%;
-    background-color: #9fc3f2;
-    
-
-
-    margin-right: 5px;;
-}
-
-nav#main-menu ul{
-    padding: 0;
-    border: 1px solid yellow;
-    width: 100%;
-}
-
 nav#main-menu ul li{
     width: 100%;
+    margin: 10px 0;
+    padding: 10px 0;
+    text-align: center;
+    color: var(--cl-neutral-light);
+    font-weight: 600;
     background-color: var(--cl-secundary);
+    font-size: 1.4em;
+    cursor: pointer;
+
+    &:hover{
+        background-color: var(--cl-secundary-light);
+        box-shadow: 0 0px 8px black;
+    }
+
+    &:active{
+        box-shadow: none;
+    }
+    
+    a{
+        text-decoration: none;
+        color: inherit;
+        
+    }
 }
 
