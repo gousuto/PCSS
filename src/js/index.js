@@ -1,7 +1,8 @@
 import modal from "./_modal";
-import views from './views.js'
 
-import { purchases, billing, reports, nofound, dashboard, products } from './views.js'
+//import { purchases, billing, reports, nofound, dashboard} from './views.js'
+import products from './products/view';
+
 
 const navigateTo = url => {
     history.pushState(null, null, url);
@@ -11,12 +12,12 @@ const navigateTo = url => {
 const router = () => {
 
     const routes = [
-        { path: "/nofound", view: nofound },
-        { path: "/", view: dashboard },
-        { path: "/products", view: products },
-        { path: "/billing", view: billing },
-        { path: "/reports", view: reports },
-        { path: "/purchases", view: purchases },
+        // { path: "/nofound", view: nofound },
+        // { path: "/", view: dashboard },
+         { path: "/products", view: products },
+        // { path: "/billing", view: billing },
+        // { path: "/reports", view: reports },
+        // { path: "/purchases", view: purchases },
     ];
 
     let viewPage = routes.find(route => route.path === location.pathname)
