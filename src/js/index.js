@@ -1,5 +1,7 @@
 import modal from "./_modal";
-import Dashboard from './views/dashboard';
+import views from './views.js'
+
+import { purchases, billing, reports, nofound, dashboard, products } from './views.js'
 
 const navigateTo = url => {
     history.pushState(null, null, url);
@@ -7,20 +9,24 @@ const navigateTo = url => {
 }
 
 const router = () => {
+
     const routes = [
-        { path: "/nofound", view: () => console.log("") },
-        { path: "/", view: () => Dashboard },
-        { path: "/products", view: () => console.log("Viewing Products") },
+        { path: "/nofound", view: nofound },
+        { path: "/", view: dashboard },
+        { path: "/products", view: products },
+        { path: "/billing", view: billing },
+        { path: "/reports", view: reports },
+        { path: "/purchases", view: purchases },
     ];
 
-    const viewPage = routes.find(route => route.path === location.pathname)
+    let viewPage = routes.find(route => route.path === location.pathname)
 
     if(!viewPage) {
         viewPage = routes[0]
     }
 
-    const View = new viewPage.view();
-    document.querySelector('.main-container').innerHTML = View.prototype.getHTML();
+    document.title = viewPage.view.title;
+    document.querySelector('.main-container').innerHTML = viewPage.view.getHTML();
 };
 
 window.addEventListener("popstate", router);
