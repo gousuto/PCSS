@@ -18,7 +18,7 @@ const getData = (collection, filter) => {
     ]
 }
 
-const insertData = (collection, filter, data) =>{
+const insertData = (collection, filter, data) => {
 
 }
 

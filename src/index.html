@@ -1,42 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PCS | Home</title>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>PCS | Home</title>
 
-    <link rel="stylesheet" href="./style/main.scss">
-    
-</head>
+        <script src="./js/views.js"></script>
+        <link rel="stylesheet" href="./style/main.scss" />
+    </head>
 
-<body>
-    <header>
-        <h1>Pineda's Clean Service</h1> 
-        <h2>System</h2>
-    </header>
+    <body>
+        <header>
+            <a href="/" data-link>
+                <h1>Pineda's Clean Service</h1>
+                <h2>System</h2>
+            </a>
+        </header>
 
-    <main>
-        <aside class="left-panel">
-            <nav id="main-menu">
-                <ul>
-                    <li><a href="/billing" data-link>Facturación</a></li>
-                    <li><a href="/purchases" data-link>Compras</a></li>
-                    <li><a href="/products" data-link>Productos</a></li>
-                    <li><a href="/reports" data-link>Reportes</a></li>
-                </ul>
-            </nav>
-        </aside>
-        
-        <div class="main-container"></div>
-    
-    </main>
+        <main>
+            <aside class="left-panel">
+                <nav id="main-menu">
+                    <ul>
+                        <li><a href="/billing" data-link>Facturación</a></li>
+                        <li><a href="/purchases" data-link>Compras</a></li>
+                        <li><a href="/products" data-link>Productos</a></li>
+                        <li><a href="/reports" data-link>Reportes</a></li>
+                    </ul>
+                </nav>
+            </aside>
 
-    <footer>
-        Crated with 💖 by joanbric@gmail.com
-    </footer>
-    <div class="modal">
-        
-    </div>
-    <script type="module" src="./js/index.js"></script> 
-</body>
+            <div class="main-container"></div>
+        </main>
+
+        <footer>Crated with 💖 by joanbric@gmail.com</footer>
+        <div class="modal"></div>
+        <script type="module" src="./js/index.js"></script>
+    </body>
 </html>

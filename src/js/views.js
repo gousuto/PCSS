@@ -1,42 +1,13 @@
-import dater from './dater';
+import products from '../views/products.pug';
+import dashboard from '../views/dashboard.pug';
+import nofound from '../views/nofound.pug';
+import editProduct from '../views/editProduct.pug';
 
 
 
-const billing = {
-    title: 'Facturación',
-    getHTML: () => {
-        return '<h1>Facturación</h1>';
-    }
+document.views = {
+    products,
+    dashboard,
+    nofound,
+    editProduct
 }
-
-const dashboard = {
-    title: 'Dashboard',
-    getHTML: () => {
-        return '<h1>Dashboard</h1>';
-    }
-}
-
-const purchases = {
-    title: 'Compras',
-    getHTML: () => {
-        return '<h1>Compras</h1>';
-    }
-}
-
-const reports = {
-    title: 'Reportes',
-    getHTML: () => {
-        return '<h1>Reportes</h1>';
-    }
-}
-
-const nofound = {
-    title: 'Page no found',
-    getHTML: () => {
-        return '<h1>Page no found</h1>';
-    }
-}
-
-let hola = 'gola';
-
-export { dashboard, billing, purchases, reports, nofound};

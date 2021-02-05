@@ -1,0 +1,77 @@
+body{
+    font-family: sans;
+    margin: 0;
+    padding: 0;
+    background-image: url("https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fmiro.medium.com%2Fmax%2F2964%2F1*pv_c3Cw4lAwgqi0BTlkR3Q.png&f=1&nofb=1");
+  }
+  .modal{
+    position: absolute;
+    background-color: rgba(0, 0, 0, .4);
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  
+  .content{
+    background-color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 4px;
+  }
+  
+  .window-title{
+    background-color: #0063B1;
+    color: white;
+    font-size: 2rem;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 4px 4px 0 0;
+    margin-bottom: 10px;
+  }
+  form{
+    margin: 10px;
+  }
+  .form-item{
+    padding: 10px;
+    margin: 10px;
+  }
+  .form-item label
+  {
+    font-weight: bold;
+    display:block;
+  }
+  .input-element{
+    font-size: 1.5rem;
+    border: 1px solid #555;
+    border-radius: 4px;
+    padding: 3px;
+  }
+  input{
+    font-size: inherit;
+    display: inline;
+    border: none;
+    height: 100%;
+  }
+  
+  
+  .content .footer{
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    
+  }
+  
+  .footer button{
+    margin-right: 10px;
+  }
+  
+  .btn-secundary-negative{
+    border: none;
+    background-color: inherit;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+  }
