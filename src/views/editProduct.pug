@@ -1,16 +1,14 @@
-.modal
-  .content
-    .window-title Creando Producto nuevo
-    form
-      .form-item
-        label Nombre
-        .input-element
-          input(type="text" placeholder="Refresco 2 litros")
-      .form-item
-        label Precio
-        .input-element  
-          span Lps
-          input(type="currency" placeholder="20.00")
-      .footer
-        button(class="btn-secundary-negative") Cancelar
-        button(class="btn-prymary") Guardar
+.window-title Creando Producto nuevo
+form
+  .form-item
+    label Nombre
+      .input-element
+        input(type="text" name="name" placeholder="Refresco 2 litros")
+  .form-item
+    label Precio
+    .input-element  
+      span Lps
+      input(type="currency" name="price" placeholder="20.00")
+  .footer
+    button(class="btn-secundary-negative" type="button") Cancelar
+    button(class="btn-prymary" type="submit") Guardar

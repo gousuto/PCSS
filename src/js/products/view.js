@@ -21,10 +21,13 @@ function showView() {
 
     view.querySelector('tbody.products-list').innerHTML = productList;
     
-    view.querySelectorAll('span.edit').forEach( ele => {
-        ele.addEventListener('click', (e) =>{
-            console.log('Hola', e.target.id);
-        });
+    view.querySelector('button')?.addEventListener('click', newProduct);
+
+    view.querySelectorAll('span.edit')?.forEach( ele => {
+        ele.addEventListener('click', editProduct);
+    })
+    view.querySelectorAll('span.delete')?.forEach( ele => {
+        ele.addEventListener('click', deleteProduct)
     })
     
     document.title = title;
@@ -34,9 +37,29 @@ function showView() {
 }
 
 
-function showModal(){
+function newProduct(){
+    console.log('entra')
+    const container = document.querySelector('div.modal');
+    const view = document.createElement('div')
+    view.classList = 'content'
+    view.innerHTML = document.views.editProduct;
     
+    if(container){
+        container.innerHTML = ''
+        container.appendChild(view) 
+        container.style.visibility = 'visible';
+    }
+
 }
+
+function editProduct(e){
+    console.log(e.target.id)
+}
+
+function deleteProduct(e){
+
+}
+
 
 export default{
     showView

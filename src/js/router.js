@@ -1,7 +1,6 @@
 import products from './products/view';
 import nofound from './other/nofound.view'
 import dashboard from './dashboard/view';
-import view from './products/view';
 
 function router(){
 
