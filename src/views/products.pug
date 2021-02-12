@@ -1,23 +1,26 @@
 h1 Products
 
-button(id="btnAddProduct") + Nuevo producto
-table
+button(id="btnAddProduct" class="btn-primary float-right") + Nuevo producto
+table.table
+    
     thead
-        tr
-            th Nombre
-            th Precio
-            th Operaciones
+        tr.table__row
+            th.table__row__header.txt-left Nombre
+            th.table__row__header.txt-right Precio
+            th.table__row__header.txt-center Operaciones
     
     tbody( class="products-list")
-        tr
-            td Limpieza de area de juegos grande
-            td Lps. 3,500.00
-            td 
+        
+        tr.table__row
+            td.table__row__item.txt-left Limpieza de area de juegos grande
+            td.table__row__item.txt-right Lps. 3,500.00
+            td.table__row__item.txt-center
                 span(class="edit")
                 span(class="delete")
-        tr
-            td Limpiza de area de juegos mediana
-            td Lps. 2,500.00
-            td 
+        
+        tr.table__row
+            td.table__row__item.txt-left Limpiza de area de juegos mediana
+            td.table__row__item.txt-right Lps. 2,500.00
+            td.table__row__item.txt-center
                 span(class="edit")
                 span(class="delete")

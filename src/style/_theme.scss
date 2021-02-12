@@ -1,0 +1,215 @@
+@import 'theme/messages';
+
+.list {
+    .list__item {
+        .list__item__name {
+        }
+    }
+}
+
+.menu{
+    .menu__item{
+        
+    }
+}
+
+
+.float-right{
+    float: right;
+}
+
+
+
+
+
+// =============== *** BUTTONS *** ==================
+
+.btn-primary {
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    padding: 5px;
+    
+    font-weight: bold;
+    
+    color: var(--cl-neutral-light);
+    background-color: var(--cl-primary-ligth);
+    border: 2px solid var(--cl-primary-ligth);
+    border-radius: 6px;
+    
+
+    cursor: pointer;
+
+    &:hover{
+        box-shadow: 0 2px 6px grey;
+    }
+    &:active{
+        box-shadow: none;
+    }
+}
+
+.btn-secondary {
+}
+
+.btn-secondary-negative {
+}
+
+.btn-secondary-simple {
+}
+
+.btn-secondary-simple-negative {
+    border: none;
+    background-color: inherit;
+    color: #f24b4b;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+        box-shadow: none;
+    }
+
+}
+
+
+// =============== *** *** TEXTS *** *** ===================
+
+.txt-left { text-align: left; }
+
+.txt-right { text-align: right; }
+
+.txt-center { text-align: center; }
+
+
+
+// ================ *** *** TABLES *** *** =============
+.table {
+    width: 100%;
+    border-spacing: 0;
+
+    .table__row {
+
+        font-size: 1.2rem;
+        padding: 100px 0;
+
+        .table__row__header{
+            color: var(--cl-neutral-dark);
+            height: 100%;
+            border-bottom: 2px solid #333333;
+        }
+
+        .table__row__item {
+            color: black;
+            height: 2em;
+            border-bottom: 1px solid #333333;
+
+
+            .table__row__item__btn-mini{
+                min-width: 1.5em;
+                min-height: 1.5em;
+                &:hover{
+                    cursor: pointer;
+                }
+
+            }
+
+            // Tengo que distribuir bien estas clases
+            .table__row__item__btn-icon{
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+            }
+
+            .table__row__item__edit{
+                background-image: url('/assets/img/btnEdit1.svg');
+            }
+
+            .btn-icon-delete{
+                background-image: url('/assets/img/btnDelete1.svg');
+                
+            }
+
+        }
+
+        .table__row__item:has(.btn-icon-mini){
+            display: flex;
+
+        }
+    }
+}
+
+
+// *** *** MODALS *** ***
+
+.modal{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, .4);
+    visibility: hidden;
+
+    .modal-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 4px;
+        background-color: #fff;
+    
+        .modal-content__title {
+            background-color: #0063b1;
+            color: white;
+            font-size: 1.6rem;
+            font-weight: bold;
+            padding: 5px;
+            border-radius: 4px 4px 0 0;
+            margin-bottom: 10px;
+        }
+    
+        .form {
+            margin: 10px;
+        
+            .form__item {
+                padding: 10px;
+                margin: 10px;
+        
+                .form__item__label {
+                    font-weight: bold;
+                    display: block;
+                }
+        
+                .form__item__input {
+                    font-size: 1.5rem;
+                    border: 1px solid #555;
+                    border-radius: 4px;
+                    padding: 3px;
+        
+                    input {
+                        font-size: inherit;
+                        display: inline;
+                        border: none;
+                        height: 100%;
+                    }
+        
+                    span {
+                        margin-right: 6px;
+                    }
+                }
+            }
+    
+            .form__footer {
+                display: flex;
+                justify-content: right;
+                align-items: center;
+        
+                button {
+                    margin-right: 25px;
+                }
+            }
+        }
+    
+    } // End modal content
+} // End modal
+

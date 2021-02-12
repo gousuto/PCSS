@@ -1,66 +1,80 @@
-import operator from './operator'
+import controller from "./controller";
+import message from "../messages";
 
-const title = 'Productos';
 function showView() {
-    
-    const view = document.createElement('div');
-    
+    const view = document.createElement("div");
+
     view.innerHTML = document.views.products;
 
-    let dataProductList = operator.getData('products');
-    let productList = ``
-
-    dataProductList.forEach(product => {
-        productList += `    
-        <tr>
-            <td>${product.name}</td>
-            <td>${product.price}</td>
-            <td><span id="${product._id}" class="edit">ddfd</span><span class="delete"></span></td>
-        </tr>`
-    });
-
-    view.querySelector('tbody.products-list').innerHTML = productList;
+    const dataProductList = controller.get("products");
     
-    view.querySelector('button')?.addEventListener('click', newProduct);
+    printNewProduct(dataProductList, view.querySelector("tbody.products-list"));
 
-    view.querySelectorAll('span.edit')?.forEach( ele => {
-        ele.addEventListener('click', editProduct);
-    })
-    view.querySelectorAll('span.delete')?.forEach( ele => {
-        ele.addEventListener('click', deleteProduct)
-    })
     
-    document.title = title;
-    document.querySelector('.main-container').innerHTML = '';
-    document.querySelector('.main-container').appendChild(view);
+    // Add functionality to the buttons
+    view.querySelector("button")?.addEventListener("click", newProduct); // Show the modal form to add new prodcut.
+    view.querySelectorAll("div.edit")?.forEach( (ele) => ele.addEventListener("click", controller.update) ); // Show the modal with the product data to update.
+    view.querySelectorAll("div.delete")?.forEach( (ele) => ele.addEventListener("click", controller.remove) ); // Remove the product selected.
 
+    // Print everything in the DOM
+    document.title = "Productos";
+    document.querySelector(".main-container").innerHTML = "";
+    document.querySelector(".main-container").appendChild(view);
 }
 
 
-function newProduct(){
-    console.log('entra')
-    const container = document.querySelector('div.modal');
-    const view = document.createElement('div')
-    view.classList = 'content'
+
+
+function printNewProduct(products, container){
+    const tr = document.createElement('tr');
+    tr.classList.add('table__row');
+
+    products.forEach((product) => {
+        tr.innerHTML = `<td class="table__row__item txt-left">${product.name}</td>`;
+        tr.innerHTML += `<td class="table__row__item txt-right">${product.price}</td>`;
+        tr.innerHTML += `<td class="table__row__item txt-center"><div id="${product._id}" class="btn-icon-mini btn-icon-edit"></div><div class="btn-icon-mini btn-icon-delete"></div></td>`;
+        container.appendChild(tr);
+    });
+}
+
+
+
+function newProduct() {
+    const container = document.querySelector("div.modal");
+    const view = document.createElement("div");
+    
+    view.classList.add("modal-content");
     view.innerHTML = document.views.editProduct;
     
-    if(container){
-        container.innerHTML = ''
-        container.appendChild(view) 
-        container.style.visibility = 'visible';
+    const $form = view.querySelector("form.form");
+    const btnCancelar = view.querySelector( "button.btn-secondary-simple-negative" );
+    
+    
+    btnCancelar?.addEventListener("click", () => document.querySelector(".modal").style.visibility = "hidden" ); // Close the modal.
+
+    $form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const data = new FormData(event.currentTarget);
+
+        controller.insert(data)
+        .then((res) => {
+            printNewProduct([res.newProduct], document.querySelector("tbody.products-list"));
+            message(res.message, res.title, 'success');
+            container.style.visibility = 'hidden';
+        })
+        .catch(rej => {
+            message(rej.message, rej.title, 'critical')
+        });
+    });
+
+    if (container) {
+        container.innerHTML = "";
+        container.appendChild(view);
+        container.style.visibility = "visible";
     }
-
 }
 
-function editProduct(e){
-    console.log(e.target.id)
-}
-
-function deleteProduct(e){
-
-}
-
-
-export default{
-    showView
+export default {
+    showView,
 };
