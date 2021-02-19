@@ -57,7 +57,7 @@ function updateData(id, data){
             res({
                 message: 'El producto actualizado exitosamente',
                 title: 'Producto actualizado con exito',
-                newProduct: data
+                newProduct: {...data, _id: id}
             });
 
         }catch(err){

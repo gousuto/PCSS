@@ -4,28 +4,45 @@ import message from "../messages";
 
 function printNewProduct(type, products){
     const container = document.querySelector("tbody.products-list");
-    const tr = document.createElement('tr');
-    tr.classList.add('table__row');
+    let tr;
 
-
-    if(type)
-    products.forEach((product) => {
-        tr.id = 'product_' + product._id;
-        tr.innerHTML = `<td class="table__row__item txt-left">${product.name}</td>`;
-        tr.innerHTML += `<td class="table__row__item txt-right">${product.price}</td>`;
-        tr.innerHTML += `<td class="table__row__item txt-center"><div id="${product._id}" class="table__row__item__btn-mini btn-edit"></div><div class="table__row__item__btn-mini btn-delete"></div></td>`;
-        container.appendChild(tr);
-    });
-
+    switch (type){
+        case 'new':
+            
+            tr = document.createElement('tr');
+            tr.classList.add('table__row');
+            
+            products.forEach((product) => {
+                tr.id = 'product_' + product._id;
+                tr.innerHTML = `<td class="table__row__item txt-left">${product.name}</td>`;
+                tr.innerHTML += `<td class="table__row__item txt-right">${product.price}</td>`;
+                tr.innerHTML += `<td class="table__row__item txt-center"><div id="${product._id}" class="table__row__item__btn-mini btn-edit"></div><div class="table__row__item__btn-mini btn-delete"></div></td>`;
+                container.appendChild(tr);
+            });
+        break;
+        case 'update':
+            console.log(products)
+            tr = document.querySelector('#product_' + products[0]._id)
+            tr.children[0].textContent = products[0].name;
+            tr.children[1].textContent = products[0].price;
+        break;
+        default:
+            console.log('NO se pudo hacer ninguna operacion al table');
+            
+    }
 }
 
 function showView() {
     const view = document.createElement("div");
-
     view.innerHTML = document.views.products;
 
+    // Print everything in the DOM
+    document.title = "Productos";
+    document.querySelector(".main-container").innerHTML = "";
+    document.querySelector(".main-container").appendChild(view);
+    
     const dataProductList = controller.get("products");
-    printNewProduct(dataProductList, view.querySelector("tbody.products-list"));
+    printNewProduct('new', dataProductList);
     
     // Add functionality to the buttons
     
@@ -36,12 +53,7 @@ function showView() {
     // REMOVE the product selected.
     view.querySelectorAll("div.btn-delete")?.forEach( (ele) => ele.addEventListener("click", controller.remove) );
 
-    console.log(view.querySelectorAll("div.btn-delete"))
 
-    // Print everything in the DOM
-    document.title = "Productos";
-    document.querySelector(".main-container").innerHTML = "";
-    document.querySelector(".main-container").appendChild(view);
 }
 
 function newProduct() {
@@ -64,7 +76,7 @@ function newProduct() {
 
         controller.insert(data)
         .then( (res) => {
-            printNewProduct([res.newProduct]);
+            printNewProduct('new', [res.newProduct]);
             message(res.message, res.title, 'success');
             container.style.visibility = 'hidden';
         })
@@ -95,8 +107,6 @@ function updateProduct(event){
 
     $name.value = document.querySelector('#product_' + id)?.children[0].textContent;
     $price.value = document.getElementById('product_' + id)?.children[1].textContent;
-
-    console.log($name)
     
     // Añadimos funcionalidad 
     const $form = view.querySelector("form.form");
@@ -111,8 +121,7 @@ function updateProduct(event){
 
         controller.update(id, data)
         .then( (res) => {
-            console.log(res)
-            printNewProduct([res.newProduct]);
+            printNewProduct('update', [res.newProduct]);
             message(res.message, res.title, 'success');
             container.style.visibility = 'hidden';
         })
