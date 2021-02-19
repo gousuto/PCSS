@@ -103,28 +103,28 @@
 
 
             .table__row__item__btn-mini{
+                display: inline-block;
                 min-width: 1.5em;
                 min-height: 1.5em;
+                margin: 0 8px;
+
                 &:hover{
                     cursor: pointer;
                 }
 
-            }
-
-            // Tengo que distribuir bien estas clases
-            .table__row__item__btn-icon{
                 background-size: contain;
                 background-repeat: no-repeat;
                 background-position: center center;
-            }
-
-            .table__row__item__edit{
-                background-image: url('/assets/img/btnEdit1.svg');
-            }
-
-            .btn-icon-delete{
-                background-image: url('/assets/img/btnDelete1.svg');
                 
+                &.btn-edit{
+                    background-image: url('/assets/img/btnEdit1.svg');
+                }
+    
+                &.btn-delete{
+                    background-image: url('/assets/img/btnDelete1.svg');
+                }
+                
+
             }
 
         }
@@ -185,12 +185,14 @@
                     border: 1px solid #555;
                     border-radius: 4px;
                     padding: 3px;
-        
+                    display: flex;
+                    
                     input {
                         font-size: inherit;
                         display: inline;
                         border: none;
                         height: 100%;
+                        width: 100%;
                     }
         
                     span {

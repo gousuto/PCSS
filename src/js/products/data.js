@@ -15,17 +15,12 @@ const products = [{
 }
 ];
 
-
 const getData = (collection, filter) => {
-    
     return products;
 }
 
 const insertData = (data, filter) => {
     const {id, name, price} = data;
-    
-    
-    
     return new Promise((resolve, reject) => {
         try{
             products.push( {id, name, price} )
@@ -47,8 +42,35 @@ const insertData = (data, filter) => {
     })
 }
 
+function updateData(id, data){
+    return new Promise( (res, rej) => {
+        try{
+            products.map( product =>{
+                if(product._id === id){
+                    product.name = data.name;
+                    product.price = data.name
+                }
 
+                return product;
+            })
+            
+            res({
+                message: 'El producto actualizado exitosamente',
+                title: 'Producto actualizado con exito',
+                newProduct: data
+            });
+
+        }catch(err){
+            rej({
+                    message: 'Error en el servidor al crear el producto',
+                    title: 'Error al crear el producto'
+                });
+
+        }
+    })
+}
 export default {
     getData,
-    insertData
+    insertData,
+    updateData
 }
