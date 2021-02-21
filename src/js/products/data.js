@@ -20,15 +20,15 @@ const getData = (collection, filter) => {
 }
 
 const insertData = (data, filter) => {
-    const {id, name, price} = data;
+    const {_id, name, price} = data;
     return new Promise((resolve, reject) => {
         try{
-            products.push( {id, name, price} )
+            products.push( {_id, name, price} )
             resolve({
                 message: 'El producto se a creado con exito',
                 title: 'Producto creado con exito',
                 newProduct: {
-                    id,
+                    _id,
                     name,
                     price
                 }
@@ -69,8 +69,31 @@ function updateData(id, data){
         }
     })
 }
+
+
+
+
+function removeData(id){
+    return new Promise((res, rej) => {
+        try{
+            const productoEliminado = products.splice(products.indexOf(products.find( product => product._id === id)), 1)
+            res({
+                message: 'El producto fue eliminado exitosamente',
+                title: 'Producto eliminado con exito',
+                newProduct: productoEliminado
+            })
+        }catch(err){
+            rej({
+                message: 'Error en el servidor al eliminar el producto',
+                title: 'Error al eliminar el producto'
+            })
+        }
+    })
+}
+
 export default {
     getData,
     insertData,
-    updateData
+    updateData,
+    removeData
 }

@@ -19,8 +19,8 @@ function update(id, newData){
     return storage.updateData(id, {name, price})
 }
 
-function remove(e){
-
+function remove(id){
+    return storage.removeData(id);
 }
 
 export default {

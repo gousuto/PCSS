@@ -1,5 +1,5 @@
 import controller from "./controller";
-import message from "../messages";
+import {msg, msgYesNo} from "../messages";
 
 
 function printNewProduct(type, products){
@@ -17,18 +17,25 @@ function printNewProduct(type, products){
                 tr.innerHTML = `<td class="table__row__item txt-left">${product.name}</td>`;
                 tr.innerHTML += `<td class="table__row__item txt-right">${product.price}</td>`;
                 tr.innerHTML += `<td class="table__row__item txt-center"><div id="${product._id}" class="table__row__item__btn-mini btn-edit"></div><div class="table__row__item__btn-mini btn-delete"></div></td>`;
+
+                tr.querySelector("div.btn-edit").addEventListener("click", updateProduct); 
+                tr.querySelector("div.btn-delete").addEventListener("click", deleteProduct);
+
                 container.appendChild(tr);
             });
         break;
         case 'update':
-            console.log(products)
             tr = document.querySelector('#product_' + products[0]._id)
             tr.children[0].textContent = products[0].name;
             tr.children[1].textContent = products[0].price;
         break;
+        case 'delete':
+            tr = document.querySelector('#product_' + products[0]._id);
+            container.removeChild(tr);
+        break;
         default:
             console.log('NO se pudo hacer ninguna operacion al table');
-            
+        
     }
 }
 
@@ -51,7 +58,7 @@ function showView() {
     // Show the modal with the product data TO UPDATE.
     view.querySelectorAll("div.btn-edit")?.forEach( (ele) => ele.addEventListener("click", updateProduct) ); 
     // REMOVE the product selected.
-    view.querySelectorAll("div.btn-delete")?.forEach( (ele) => ele.addEventListener("click", controller.remove) );
+    view.querySelectorAll("div.btn-delete")?.forEach( (ele) => ele.addEventListener("click", deleteProduct) );
 
 
 }
@@ -77,11 +84,11 @@ function newProduct() {
         controller.insert(data)
         .then( (res) => {
             printNewProduct('new', [res.newProduct]);
-            message(res.message, res.title, 'success');
+            msg(res.msg, res.title, 'success');
             container.style.visibility = 'hidden';
         })
         .catch( rej => {
-            message(rej.message, rej.title, 'critical')
+            msg(rej.msg, rej.title, 'critical')
         });
 
     });
@@ -122,11 +129,11 @@ function updateProduct(event){
         controller.update(id, data)
         .then( (res) => {
             printNewProduct('update', [res.newProduct]);
-            message(res.message, res.title, 'success');
+            msg(res.msg, res.title, 'success');
             container.style.visibility = 'hidden';
         })
         .catch( rej => {
-            message(rej.message, rej.title, 'critical')
+            msg(rej.msg, rej.title, 'critical')
         });
 
     });
@@ -137,6 +144,21 @@ function updateProduct(event){
         container.style.visibility = "visible";
     }
 
+}
+
+
+function deleteProduct(event){
+    const id = event.currentTarget.id;
+    msgYesNo('Eliminar producto', 'Usted está a punto de eliminar el producto', 'none', () => {
+        controller.remove(id).then( res => {
+            printNewProduct('delete', res.newProduct);
+            msg(res.message, res.title, 'success');
+        })
+        .catch( rej => {
+            msg(rej.message, rej.title, 'critical')
+        });
+    });
+    
 }
 
 export default {

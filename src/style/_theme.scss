@@ -40,6 +40,11 @@
 
     cursor: pointer;
 
+    &.critical{
+        background-color: #f24b4b;
+        border-color: #f24b4b;
+    }
+
     &:hover{
         box-shadow: 0 2px 6px grey;
     }
@@ -55,6 +60,18 @@
 }
 
 .btn-secondary-simple {
+    font-weight: bold;
+    background: none;
+    border: none;
+    padding: 5px;
+    margin-right: 10px;
+
+    &:hover{
+        cursor: pointer;
+
+    }
+
+
 }
 
 .btn-secondary-simple-negative {

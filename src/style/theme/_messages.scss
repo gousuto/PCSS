@@ -16,13 +16,12 @@ $clr-inf: #037aad;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-
-
 .message-content {
     display: flex;
+    padding-right: 30px;
 }
 
-.icon {
+.message__icon {
     width: 30px;
     height: 30px;
     background-position: center;
@@ -44,33 +43,41 @@ $clr-inf: #037aad;
     }
 }
 
-.text {
+.message__text {
     display: flex;
     flex-flow: column;
     margin: 10px;
+
+
+    .message__text__title {
+        font-size: 1.6em;
+        font-weight: 600;
+    
+        &.alert{
+            color: $clr-ale;
+        }
+    
+        &.critical{
+            color: $clr-cri;
+        }
+        &.information{
+            color: $clr-inf
+        }
+        &.success{
+            color: $clr-suc;
+        }
+    }
+
+    .message__text__message{
+        font-size: 1.2em;
+    }
+    .message__text__footer{
+        margin-top: 15px;
+        text-align: right;
+    }
 }
 
-.title {
-    font-size: 1.4em;
-    font-weight: 600;
-
-    &.alert{
-        color: $clr-ale;
-    }
-
-    &.critical{
-        color: $clr-cri;
-    }
-    &.information{
-        color: $clr-inf
-    }
-    &.success{
-        color: $clr-suc;
-    }
-}
-
-
-.btn-close{
+.message__btn-close{
     position: absolute;
     top: 0;
     right: 0;
