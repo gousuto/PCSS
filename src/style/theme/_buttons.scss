@@ -1,0 +1,64 @@
+
+// =============== *** BUTTONS *** ==================
+
+.btn-primary {
+    margin-bottom: 10px;
+    margin-right: 10px;
+
+    padding: 5px;
+    
+    font-weight: bold;
+    
+    color: var(--cl-neutral-light);
+    background-color: var(--cl-primary-ligth);
+    border: 2px solid var(--cl-primary-ligth);
+    border-radius: 6px;
+    
+
+    cursor: pointer;
+
+    &.critical{
+        background-color: #f24b4b;
+        border-color: #f24b4b;
+    }
+
+    &:hover{
+        box-shadow: 0 2px 6px grey;
+    }
+    &:active{
+        box-shadow: none;
+    }
+}
+
+.btn-secondary {
+}
+
+.btn-secondary-negative {
+}
+
+.btn-secondary-simple {
+    font-weight: bold;
+    background: none;
+    border: none;
+    padding: 5px;
+    margin-right: 10px;
+
+    &:hover{
+        cursor: pointer;
+
+    }
+
+
+}
+
+.btn-secondary-simple-negative {
+    border: none;
+    background-color: inherit;
+    color: #f24b4b;
+    font-weight: bold;
+    cursor: pointer;
+    &:hover {
+        box-shadow: none;
+    }
+
+}

@@ -1,0 +1,55 @@
+// ================ *** *** TABLES *** *** =============
+.table {
+    width: 100%;
+    border-spacing: 0;
+
+    .table__row {
+
+        font-size: 1.2rem;
+        padding: 100px 0;
+
+        .table__row__header{
+            color: var(--cl-neutral-dark);
+            height: 100%;
+            border-bottom: 2px solid #333333;
+        }
+
+        .table__row__item {
+            color: black;
+            height: 2em;
+            border-bottom: 1px solid #333333;
+
+
+            .table__row__item__btn-mini{
+                display: inline-block;
+                min-width: 1.5em;
+                min-height: 1.5em;
+                margin: 0 8px;
+
+                &:hover{
+                    cursor: pointer;
+                }
+
+                background-size: contain;
+                background-repeat: no-repeat;
+                background-position: center center;
+                
+                &.btn-edit{
+                    background-image: url('/assets/img/btnEdit1.svg');
+                }
+    
+                &.btn-delete{
+                    background-image: url('/assets/img/btnDelete1.svg');
+                }
+                
+
+            }
+
+        }
+
+        .table__row__item:has(.btn-icon-mini){
+            display: flex;
+
+        }
+    }
+}

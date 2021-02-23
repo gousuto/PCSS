@@ -1,6 +1,7 @@
 import products from './products/view';
 import nofound from './other/nofound.view'
 import dashboard from './dashboard/view';
+import billing from './billing/view'
 
 function router(){
 
@@ -10,7 +11,7 @@ function router(){
         { path: "/", view: dashboard }, 
         { path: "/products", view: products.showView },
         //{ path: "/products/:id", view: products.showModal }
-        // { path: "/billing", view: billing },
+        { path: "/billing", view: billing.showView },
         // { path: "/reports", view: reports },
         // { path: "/purchases", view: purchases },
     ];
