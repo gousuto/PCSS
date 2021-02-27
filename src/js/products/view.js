@@ -56,7 +56,7 @@ function showView() {
     // Show the modal form to add NEW PRODUCT.
     view.querySelector("button")?.addEventListener("click", newProduct); 
     // Show the modal with the product data TO UPDATE.
-    view.querySelectorAll("div.btn-edit")?.forEach( (ele) => ele.addEventListener("click", updateProduct) ); 
+    view.querySelectorAll("div.btn-edit")?.forEach( (ele) => ele.addEventListener("click", updateProduct) );
     // REMOVE the product selected.
     view.querySelectorAll("div.btn-delete")?.forEach( (ele) => ele.addEventListener("click", deleteProduct) );
 
